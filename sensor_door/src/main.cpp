@@ -14,12 +14,21 @@
 int main(int argc, char* argv[])
 {
     ros::init(argc, argv, "sensor_door_server");
-    ros::NodeHandle nh("sensor_door_server");
+    ros::NodeHandle nh("~");
 
     int server_port {3333};
-    nh.getParam("server_port", server_port);
-    nh.getParam("client/refresh_rate", uvone_robot::Client::refresh_rate);
-    nh.getParam("client/timeout_ms", uvone_robot::Client::timeout_ms);
+    if(!nh.getParam("server_port", server_port))
+    {
+        ROS_WARN("No listen port defined(~server_port), default port is %d", server_port);
+    }
+    if(!nh.getParam("client/refresh_rate", uvone_robot::Client::refresh_rate))
+    {
+        ROS_WARN("No client refresh rate defined(~client/refresh_rate), default refresh rate is %.2f hz", uvone_robot::Client::refresh_rate);
+    }
+    if(!nh.getParam("client/timeout_ms", uvone_robot::Client::timeout_ms))
+    {
+        ROS_WARN("No client timeout defined(~client/timeout_ms), default timeout is %.2f ms", uvone_robot::Client::timeout_ms);
+    }
 
     uvone_robot::Cluster cluster(server_port, 5);
 
