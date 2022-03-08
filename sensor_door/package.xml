@@ -11,9 +11,8 @@
 
     <buildtool_depend>catkin</buildtool_depend>
 
+    <depend>sensor_door_msgs</depend>
     <build_depend>roscpp</build_depend>
-    <build_depend>sensor_door_msgs</build_depend>
     <exec_depend>roscpp</exec_depend>
-    <exec_depend>sensor_door_msgs</exec_depend>
 
 </package>

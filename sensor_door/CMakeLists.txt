@@ -17,3 +17,4 @@ add_executable(
   src/cluster.cpp
 )
 target_link_libraries(sensor_door_server ${catkin_LIBRARIES})
+add_dependencies(sensor_door_server ${catkin_EXPORTED_TARGETS})
