@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
     ros::init(argc, argv, "sensor_door_server");
     ros::NodeHandle nh("sensor_door_server");
 
-    int server_port {9999};
+    int server_port {3333};
     nh.getParam("server_port", server_port);
     nh.getParam("client/refresh_rate", uvone_robot::Client::refresh_rate);
     nh.getParam("client/timeout_ms", uvone_robot::Client::timeout_ms);
