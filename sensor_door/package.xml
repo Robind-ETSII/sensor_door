@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package format="2">
+    <name>sensor_door</name>
+    <version>1.0.0</version>
+    <description>
+        This package manages esp32 sensor door.
+    </description>
+    <author email="theverbat@gmail.com">Rafael M</author>
+    <maintainer email="theverbat@gmail.com">Rafael M</maintainer>
+    <license>BSD</license>
+
+    <buildtool_depend>catkin</buildtool_depend>
+
+    <build_depend>roscpp</build_depend>
+    <build_depend>sensor_door_msgs</build_depend>
+    <exec_depend>roscpp</exec_depend>
+    <exec_depend>sensor_door_msgs</exec_depend>
+
+</package>
