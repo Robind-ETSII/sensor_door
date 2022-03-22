@@ -6,6 +6,7 @@ add_message_files(
   FILES
   DoorStatus.msg
   MultipleDoorStatus.msg
+  DoorSecurity.msg
 )
 
 add_service_files(
