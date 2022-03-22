@@ -196,32 +196,40 @@ void Client::update_task()
         try
         {
             const bool state { send_msg("STATUS?")};
-            if (state)
+
+	    if (state)
             {
                 std::string msg {read_msg()};
-                
-                times_unsuccessfull = 0;
+
                 _last_response_successfull = true;
 
-                if (msg == "STATUS?OK")
-                {    
+		if (times_unsuccessfull > 0)
+		{
+			times_unsuccessfull = 0;
+		}
+		if (msg == "STATUS?OK")
+                {
                     _door_status = true;
                 }
-                else
+                else if (msg == "STATUS?KO")
                 {
                     _door_status = false;
                 }
-                
+
                 //std::cout << " - " << _id_device << ": " << msg << std::endl;
             }
         }
         catch(const std::exception& e)
         {
             ++times_unsuccessfull;
-            _last_response_successfull = false;
 
-            ROS_WARN("Timeout (%d) message device '%s' (fd=%d)", times_unsuccessfull, _id_device.c_str(), _sock_fd);
-            if (times_unsuccessfull == 5)
+	    if (times_unsuccessfull > 5)
+               ROS_WARN_DELAYED_THROTTLE(1, "Timeout (%d) message device '%s' (fd=%d)", times_unsuccessfull, _id_device.c_str(), _sock_fd);
+
+	    if (times_unsuccessfull > 10)
+                _last_response_successfull = false;
+
+            if (times_unsuccessfull == 20)
             {
                 disconnect();
                 _keep_theads = false;
