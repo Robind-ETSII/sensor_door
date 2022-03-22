@@ -1,0 +1,6 @@
+<launch>
+    <node name="security_parser" pkg="sensor_door" type="security_node" output="screen">
+        <remap from="~door_status" to="/door_status_ns" />
+        <remap from="~sound" to="/mobile_base/commands/sound" />
+    </node>
+</launch>

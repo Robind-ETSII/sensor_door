@@ -18,3 +18,10 @@ add_executable(
 )
 target_link_libraries(sensor_door_server ${catkin_LIBRARIES})
 add_dependencies(sensor_door_server ${catkin_EXPORTED_TARGETS})
+
+add_executable(
+  security_node 
+  src/security_node.cpp 
+)
+target_link_libraries(security_node ${catkin_LIBRARIES})
+add_dependencies(security_node ${catkin_EXPORTED_TARGETS})
