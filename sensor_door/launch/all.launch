@@ -1,0 +1,4 @@
+<launch>
+    <include file="$(find sensor_door)/launch/sensor_door.launch" ns="sensor_door" />
+    <include file="$(find sensor_door)/launch/security.launch" ns="sensor_door" />
+</launch>
