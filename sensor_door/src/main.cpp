@@ -32,7 +32,7 @@ int main(int argc, char* argv[])
 
     uvone_robot::Cluster cluster(server_port, 5);
 
-    ros::Publisher pub = nh.advertise<sensor_door_msgs::MultipleDoorStatus>("/door_status", 1000);
+    ros::Publisher pub = nh.advertise<sensor_door_msgs::MultipleDoorStatus>("status", 1000);
     ros::ServiceServer srv = nh.advertiseService("clean_disconnected_devices", &uvone_robot::Cluster::callback_clean_devices, &cluster);
 
     while(ros::ok())
