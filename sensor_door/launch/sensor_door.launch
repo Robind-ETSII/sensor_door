@@ -1,0 +1,13 @@
+<launch>
+  <arg name="server_port"   default="3333"  doc="Port to connect ESP32" />
+  <arg name="refresh_rate"  default="30.0"  doc="TODO" />
+  <arg name="timeout_ms"    default="400.0" doc="TODO" />
+
+  <node pkg="sensor_door" type="sensor_door_server" name="sensor_door" output="screen">
+    <param name="server_port"         type="int"    value="$(arg server_port)"  />
+    <param name="client/refresh_rate" type="double" value="$(arg refresh_rate)" />
+    <param name="client/timeout_ms"   type="double" value="$(arg timeout_ms)"   />
+
+    <remap from="door_status" to="door_status_ns" />
+  </node>
+</launch>
